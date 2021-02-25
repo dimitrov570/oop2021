@@ -25,7 +25,7 @@ int main(){
     
     //статичните променливи можем да достъпим и без да има създадени обекти от този тип
     //забележете, че от Allignment1 не са създавани обекти
-    cout << "Value of p: " << Allignment1::q << "\n";
+    cout << "Value of q: " << Allignment1::q << "\n";
 
     cout << "Size of Allignment1: " << sizeof(Allignment1) << "\n";
     cout << "Size of Allignment2: " << sizeof(Allignment2) << "\n";
