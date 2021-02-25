@@ -20,8 +20,8 @@ int Allignment2::p = 0; //декларира се статичната пром�
 
 int main(){
 
-    cout << "Size of Allignment1; " << sizeof(Allignment1) << "\n";
-    cout << "Size of Allignment1; " << sizeof(Allignment1) << "\n";
+    cout << "Size of Allignment1: " << sizeof(Allignment1) << "\n";
+    cout << "Size of Allignment2: " << sizeof(Allignment2) << "\n";
 
     x.p = 3;
     cout << "Value of p in y: " << y.p << "\n";
