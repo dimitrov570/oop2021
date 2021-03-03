@@ -194,7 +194,7 @@ void MyClass::print() const
     std::cout << var << "\n";
 }
 
-void setVar(int newVar) 
+void MyClass::setVar(int newVar) 
 {
     this->var = newVar;
 }
