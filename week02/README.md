@@ -76,27 +76,47 @@ public:
 };
 ```
 
-### Member initializer list
-
-- задават се стойности на член-данните по време на тяхната дефиниция (преди тялото на конструктора)
-```c++
-    MyClass::MyClass(int value) : var(value) {}
-```
-- иначе първо се извиква конструктора по подразбиране при заделяне на паметта и след това се присвояват стойностите, както тук:
-```c++
-    MyClass::MyClass(int value) 
-    {
-        this->var = value;
-    }
-```
-- позволява инициализация на константи
-
 Извикване на контруктор:
 ```c++
     MyClass var; //default constructor called
     MyClass var(5); //implicit call
     MyClass var = MyClass(5); //explicit call
 ```
+
+
+### Инициализиращ списък (Member initializer list)
+
+- задават се стойности на член-данните по време на тяхната дефиниция (преди тялото на конструктора).
+Пример:
+```c++
+    Rational::Rational(int num, double denom) : numerator(num), denominator(denom) {}
+```
+- иначе първо се заделя паметта (извиква се конструктора по подразбиране за обекти) и след това се присвояват стойностите. 
+Пример:
+```c++
+    MyClass::MyClass(int value1, double value2) 
+    {   
+        this->var1 = value1;
+        this->var2 = value2;
+    }
+```
+- позволява инициализация на константи. Пример:
+    ```c++
+        class Example {
+            const int MY_CONST;
+            int var;
+
+        public:
+            Example(int constValue, int Var) : MY_CONST(constValue), var(Var) {}
+        }
+    ```
+    - защо следното няма да работи:
+    ```c++
+        Example(int constValue, int Var) : var(Var) {
+                MY_CONST = constValue;
+            }
+    ```
+
 
 ### this
 - указател към текущия обект
