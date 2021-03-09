@@ -3,18 +3,18 @@
 
 const int INITIAL_SIZE = 2;
 
-//delegate constructor, we're basically telling the default constructor to call the int-constructor with the default parameter
-//we've chosen this strategy because virtually, a Vector will always need some size to start with in order to allocate the dynamic memory
-Vector::Vector() : Vector::Vector(INITIAL_SIZE) {}
+Vector::Vector() : size(INITIAL_SIZE), lastIndex(-1) {
+	data = new int[size];
+}
 
 Vector::Vector(int Size) : size(Size), lastIndex(-1)
 {
-	allocateResourceMemory();
+	data = new int[size];
 }
 
 Vector::Vector(const Vector& other) : size(other.size), lastIndex(other.lastIndex)
 {
-	allocateResourceMemory();
+	data = new int[size];
 
 	for (int i = 0; i < size; i++)
 	{
@@ -45,38 +45,40 @@ int Vector::getAt(int index) const
 
 int Vector::first() const
 {
+	//TODO
 	return 0;
 }
 
 int Vector::last() const
 {
+	//TODO
 	return 0;
 }
 
 bool Vector::setAt(int, int)
 {
+	//TODO
 	return false;
 }
 
 bool Vector::push_back(int)
 {
+	//TODO
 	return false;
 }
 
 int Vector::pop_back()
 {
+	//TODO
 	return 0;
-}
-
-void Vector::allocateResourceMemory()
-{
-	data = new int[size];
 }
 
 void Vector::shrink()
 {
+	//TODO
 }
 
 void Vector::expand()
 {
+	//TODO
 }
