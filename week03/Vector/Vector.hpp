@@ -34,7 +34,6 @@ public:
 	int pop_back();
 
 private:
-	void allocateResourceMemory();
 	void shrink();
 	void expand();
 };
