@@ -19,10 +19,14 @@ public:
     bool setDenominator(int);
 
     /* TODO
-    operator+
+    operator+ 
     operator- (unary/binary)
     operator*
     operator/
+    operator+=
+    operator-=
+    operator*=
+    operator/=
     operator++ (prefix/postfix)
     operator-- (prefix/postfix)
     operator<<
