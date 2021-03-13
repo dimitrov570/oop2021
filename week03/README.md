@@ -35,10 +35,10 @@
 - иначе първо се заделя паметта (извиква се конструктора по подразбиране за обекти) и след това се присвояват стойностите. 
 Пример:
 ```c++
-    MyClass::MyClass(int value1, double value2) 
+    Rational::Rational(int num, int denom) 
     {   
-        this->var1 = value1;
-        this->var2 = value2;
+        this->numerator = num;
+        this->denominator = denom;
     }
 ```
 - позволява инициализация на константи. Пример:
