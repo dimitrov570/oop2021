@@ -117,7 +117,7 @@ public:
 
 Затова трябва да се провери дали обекта, който е подаден като аргумент, не е обекта, чрез който се извиква оператора за присвояване:
 ```c++
-    Person& operator=(const Person* rhs)
+    Person& operator=(const Person& rhs)
     {
         if(this != &rhs)
         {
