@@ -1,6 +1,8 @@
 #include "Rational.hpp"
 #include <numeric>
 
+int a = 6;
+
 Rational::Rational(int n, int d) : numerator(n) 
 {
     if (d != 0) 
@@ -51,6 +53,41 @@ bool Rational::setDenominator(int d)
     }
     return false;
 }
+
+Rational Rational::operator+(int x) const
+{
+        return Rational(numerator + denominator*x, denominator);
+}
+
+Rational& Rational::operator++()
+{
+    numerator += denominator;
+    return *this;
+}
+
+Rational Rational::operator++(int)
+{
+    Rational r = *this; //запазва се старата стойност
+    numerator += denominator; //променя се стойността
+    return r; //връща се старата стойност
+}
+
+Rational::operator double() const 
+{
+         return (double)numerator / denominator;
+}
+
+Rational Rational::operator-() const
+{
+    return Rational(-numerator, denominator);
+}
+
+Rational operator+(int x, const Rational& r)
+{
+    return Rational(r.getNumerator() + r.getDenominator()*x, r.getDenominator());
+}
+
+
 
 void Rational::simplify()
 {
