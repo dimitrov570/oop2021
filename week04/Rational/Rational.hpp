@@ -22,12 +22,15 @@ public:
     Rational operator+(int x) const;
     Rational& operator++(); //prefix
     Rational operator++(int); //postfix
-    operator double() const;
 
+    //unary
     Rational operator-() const;
 
-    // TODO
+    //cast to double
+    operator double() const;
 
+
+    // TODO
     // operator- (binary)
     // operator*
     // operator/
@@ -43,4 +46,5 @@ private:
     void simplify();
 };
 
+//operator + with first argument int
 Rational operator+(int x, const Rational& r);
