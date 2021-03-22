@@ -140,23 +140,19 @@ int main()
 
 ### Задача 2
 
-Предефинирайте останалите оператори от `TODO` списъка за класа [`Rational`](https://github.com/dimitrov570/oop2021/tree/main/week04/Rational).
-
-### Задача 3
-
 Предефинирайте следните оператори за класа `Vector` от предишните упражнения:
 - `operator=`
 - `operator[]`   
 
-#### Бонус към Задача 3
+#### Бонус към Задача 2
 Добавете следните методи към същия клас:
 - `insertAt(int index, int value)`, който вмъква `value`, на позиция `index`
 - `removeAt(int index)`, който премахва елемента на позиция `index`
 
 Интерфейса и част от имплементацията можете да намерите [тук](https://github.com/dimitrov570/oop2021/tree/main/week03/Vector).
 
-### Задача 4
+### Задача 3
 Имплементирайте клас `Stack`, използвайки класа `Vector`. Повече информация за стек можете да намерите [тук](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)).
 
-### Задача 5
-Имплементирайте някой от видовете [Linked list](https://en.wikipedia.org/wiki/Linked_list).
+### Задача 4
+Имплементирайте Singly [linked list](https://en.wikipedia.org/wiki/Linked_list).
