@@ -1,6 +1,8 @@
 # Enum
 - enum
 ```c++
+#include <iostream>
+
 enum Gender /*: uint8_t или int или някоя друга целочислена променлива */
 {
     Male = 6,
@@ -35,6 +37,8 @@ int main()
 - enum class  
 
 ```c++
+#include <iostream>
+
 enum class Gender /*: uint8_t или int или някоя друга целочислена променлива */
 {
     Male = 6,
@@ -85,7 +89,7 @@ enum class Gender /*: uint8_t или int или някоя друга целоч
 
 Класове и външни функции, които имат достъп до `private` и `protected` членовете на клас, който ги дефинира като такива.
 
-Пример за класа [Student](https://github.com/dimitrov570/oop2021/tree/main/week04/Student):  
+Пример за класа [Student](https://github.com/dimitrov570/oop2021/tree/main/week05/Student):  
 В .hpp файл:
 ```c++
 #pragma once
