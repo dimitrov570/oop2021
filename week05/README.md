@@ -152,7 +152,7 @@ int main()
 Интерфейса и част от имплементацията можете да намерите [тук](https://github.com/dimitrov570/oop2021/tree/main/week03/Vector).
 
 ### Задача 3
-Имплементирайте клас `Stack`, използвайки класа `Vector`. Повече информация за стек можете да намерите [тук](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)).
+Имплементирайте клас `Stack`, използвайки класа `Vector`, създаден по време на упражненията. Повече информация за стек можете да намерите [тук](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)).
 
 ### Задача 4
 Имплементирайте Singly [linked list](https://en.wikipedia.org/wiki/Linked_list).
