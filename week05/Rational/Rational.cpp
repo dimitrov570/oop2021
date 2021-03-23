@@ -77,16 +77,35 @@ Rational::operator double() const
          return (double)numerator / denominator;
 }
 
+//unary
 Rational Rational::operator-() const
 {
     return Rational(-numerator, denominator);
 }
 
-Rational operator+(int x, const Rational& r)
+//binary
+Rational Rational::operator-(const Rational& rhs) const
 {
-    return Rational(r.getNumerator() + r.getDenominator()*x, r.getDenominator());
+    Rational r;
+    r.numerator = numerator*rhs.denominator-rhs.numerator*denominator;
+    r.denominator = denominator*rhs.denominator;
+    r.simplify();
+    return r;
 }
 
+Rational operator+(int x, const Rational& r)
+{
+    return Rational(r.numerator + r.denominator*x, r.denominator);
+}
+
+Rational& Rational::operator*=(const Rational& rhs)
+{
+    numerator *= rhs.numerator;
+    denominator *= rhs.denominator;
+    simplify();
+    
+    return *this;
+}
 
 
 void Rational::simplify()
@@ -94,4 +113,16 @@ void Rational::simplify()
     int gcd = std::gcd(numerator, denominator); //available from c++17 (#include <numeric>)
     numerator /= gcd;
     denominator /= gcd; 
+}
+
+std::ostream& operator<<(std::ostream& o, const Rational& obj)
+{
+    return o << obj.numerator << '/' << obj.denominator;
+}
+
+std::istream& operator>>(std::istream& i, Rational& obj)
+{
+    i >> obj.numerator;
+    i >> obj.denominator;
+    return i;
 }

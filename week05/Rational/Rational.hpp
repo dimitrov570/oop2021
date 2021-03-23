@@ -26,25 +26,35 @@ public:
     //unary
     Rational operator-() const;
 
+    //binary
+    Rational operator-(const Rational& rhs) const;
+
+    // operator*=
+    Rational& operator*=(const Rational& rhs);
+
     //cast to double
     operator double() const;
 
+    // operator<<
+    friend std::ostream& operator<<(std::ostream& o, const Rational& obj);
+
+    // operator>>
+    friend std::istream& operator>>(std::istream& i, Rational& obj);
+    
+    
+    //operator + with first argument int
+    friend Rational operator+(int x, const Rational& r);
 
     // TODO
-    // operator- (binary)
+    
     // operator*
     // operator/
     // operator+=
     // operator-=
-    // operator*=
     // operator/=
-    // operator-- (prefix/postfix)
-    // operator<<
-    // operator>>
+    // operator-- (prefix/postfix)    
 
 private:
     void simplify();
 };
 
-//operator + with first argument int
-Rational operator+(int x, const Rational& r);

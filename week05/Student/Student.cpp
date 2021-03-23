@@ -5,7 +5,7 @@
 Student::Student(const char* Name, int fn, int Age, Student* bff) : facultyNumber(fn), age(Age), bestFriend(bff)
 {
     int nameLength = strlen(Name);
-    name = new char[nameLength + 1];
+    name = new char[nameLength + 1]; //for \0
     strcpy(name, Name);
 }
 
@@ -31,6 +31,7 @@ Student& Student::operator=(const Student& rhs)
         age = rhs.age;
         bestFriend = rhs.bestFriend;
     }
+
     return *this;
 }
 
@@ -98,7 +99,8 @@ bool Student::setAge(int newAge)
 }
 
 bool Student::setBestFriend(Student* newBff)
-{   if(this != newBff)
+{   
+    if(this != newBff)
     {
         bestFriend = newBff;
         return true;
@@ -115,4 +117,4 @@ bool Student::operator<(const Student& rhs) const
 std::ostream& operator<<(std::ostream& o, const Student& student)
 {
     return o << "Name: " << student.name << "; FN: " << student.facultyNumber << "; age: " << student.age << '\n';
-} 
+}
