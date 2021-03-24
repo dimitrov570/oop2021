@@ -14,7 +14,6 @@ int main()
 	std::cout << "Size: " << myVector.getSize() << '\n';
 	std::cout << "Last element: " << myVector.getLast() << '\n';
 
-
 	std::cout << "Adding -20" << '\n';
 	myVector.push_back(-20); // size should increase to 4
 	std::cout << "Size: " << myVector.getSize() << '\n';
@@ -34,6 +33,10 @@ int main()
 		std::cout << "Number of elements is: " << myVector.getNumberOfElements() << '\n';
 		std::cout << "Size is: " << myVector.getSize() << '\n';
 	}
+
+	Vector secondVector = myVector; //copy constructor
+	Vector thirdVector;
+	thirdVector = secondVector; //operator=
 
 	return 0;
 }

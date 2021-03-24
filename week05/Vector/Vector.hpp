@@ -13,6 +13,7 @@ public:
 	Vector();
 	Vector(unsigned int);
 	Vector(const Vector& other);
+	Vector& operator=(const Vector& rhs);
 	~Vector();
 
 	int getAt(int) const;

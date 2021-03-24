@@ -41,6 +41,22 @@ Vector::Vector(const Vector& other) : size(other.size), lastIndex(other.lastInde
 	}
 }
 
+Vector& Vector::operator=(const Vector& rhs)
+{
+	if (this != &rhs)
+	{
+		delete[] data;
+		size = rhs.size;
+		lastIndex = rhs.lastIndex;
+		data = new int[size];
+		for (int i = 0; i <= lastIndex; ++i)
+		{
+			data[i] = rhs.data[i];
+		}
+	}
+	return *this;
+}
+
 Vector::~Vector()
 {
 	delete[] data;
