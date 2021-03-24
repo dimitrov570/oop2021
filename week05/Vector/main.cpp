@@ -34,5 +34,6 @@ int main()
 		std::cout << "Number of elements is: " << myVector.getNumberOfElements() << '\n';
 		std::cout << "Size is: " << myVector.getSize() << '\n';
 	}
+
 	return 0;
 }

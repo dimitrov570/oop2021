@@ -48,9 +48,9 @@ Vector::~Vector()
 
 int Vector::getAt(int index) const
 {
-	if (0 < index || index >= lastIndex)
+	if (0 < index || index > lastIndex)
 	{
-		std::cerr << "Invalid index" << index << " passed! Biggest possible index is " << lastIndex << '\n';
+		std::cerr << "Index: " << index << " is out of range! Possible range: [" << 0 << "-" << lastIndex << "]\n";
 		return -1;
 	}
 
@@ -98,7 +98,7 @@ bool Vector::setAt(int index, int value)
 	return false;
 }
 
-bool Vector::push_back(int value)
+void Vector::push_back(int value)
 {
 	if (isFull()) // if there is no space left to add, increase vector size
 	{
@@ -106,8 +106,6 @@ bool Vector::push_back(int value)
 	}
 
 	data[++lastIndex] = value;
-	
-	return false;
 }
 
 int Vector::pop_back()
