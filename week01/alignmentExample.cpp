@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-struct Allignment1 {
+struct Alignment1 {
     static int q; //декларация на статичната промелнива q
     uint8_t a;
     uint16_t b;
@@ -9,9 +9,9 @@ struct Allignment1 {
     uint8_t d;
 };
 
-int Allignment1::p = 0; //дефинира се статичната променлива q извън класа, преди да се използва
+int Alignment1::q = 0; //дефинира се статичната променлива q извън класа, преди да се използва
 
-struct Allignment2 {
+struct Alignment2 {
     static int p; //декларация на статичната промелнива p
     uint8_t a;
     uint8_t d;
@@ -19,16 +19,16 @@ struct Allignment2 {
     uint32_t c;
 } x,y; //създават се два обекта x и y
 
-int Allignment2::p = 0; //дефинира се статичната променлива p извън класа, преди да се използва
+int Alignment2::p = 0; //дефинира се статичната променлива p извън класа, преди да се използва
 
 int main(){
     
     //статичните променливи можем да достъпим и без да има създадени обекти от този тип
-    //забележете, че от Allignment1 не са създавани обекти
-    cout << "Value of q: " << Allignment1::q << "\n";
+    //забележете, че от Alignment1 не са създавани обекти
+    cout << "Value of q: " << Alignment1::q << "\n";
 
-    cout << "Size of Allignment1: " << sizeof(Allignment1) << "\n";
-    cout << "Size of Allignment2: " << sizeof(Allignment2) << "\n";
+    cout << "Size of Alignment1: " << sizeof(Alignment1) << "\n";
+    cout << "Size of Alignment2: " << sizeof(Alignment2) << "\n";
 
     x.p = 3;
     cout << "Value of p in y: " << y.p << "\n";
