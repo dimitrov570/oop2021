@@ -32,7 +32,8 @@
 
 ### Методът `open`
 Отваря файл с име `filename`.  
-`void open(const char *filename, ios_base::openmode mode);`  
+- `void open(const char *filename, ios_base::openmode mode);`  
+
 `mode` може да приема следните стойности:
 - app
 - binary
@@ -49,7 +50,7 @@
 Поток за писане върху файл.
 `open(const char *filename, ios_base::openmode mode = `**ios_base::out**`);`
 
-## fstream
+### fstream
 Поток за четене от и писане върху файл.
 `open(const char *filename, ios_base::openmode mode = `**ios_base::in** `|` **ios_base::out**`);`
 
