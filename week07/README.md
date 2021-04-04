@@ -43,15 +43,15 @@
 
 ### ifstream
 Поток за четене от файл.  
-`open( const char *filename, ios_base::openmode mode = `**ios_base::in**` );`
+`open(const char *filename, ios_base::openmode mode = `**ios_base::in**`);`
 
 ### ofstream
 Поток за писане върху файл.
-`open( const char *filename, ios_base::openmode mode = `**ios_base::out**` );`
+`open(const char *filename, ios_base::openmode mode = `**ios_base::out**`);`
 
 ## fstream
 Поток за четене от и писане върху файл.
-`open( const char *filename, ios_base::openmode mode = `**ios_base::in** `|` **ios_base::out**` );`
+`open(const char *filename, ios_base::openmode mode = `**ios_base::in** `|` **ios_base::out**`);`
 
 ### Повече информация може да намерите на следните адреси
 - [istream](https://en.cppreference.com/w/cpp/io/basic_istream)
