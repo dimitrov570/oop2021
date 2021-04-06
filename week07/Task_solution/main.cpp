@@ -9,6 +9,8 @@
 // информация, която пазим преди данните.
 // seekg(HEADER_SIZE + n*sizeof(Rational), std::ios::beg)
 
+// ДЕКЛАРАЦИИ НА ФУНКЦИИТЕ
+
 // Тези функции за конвертиране се отнасят само за файловете с рационални числа.
 void convertBinaryToTextFile(const char* inputFilename, const char* outputFileName);
 
@@ -28,6 +30,8 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+
+// ДЕФИНИЦИИ НА ФУНКЦИИТЕ
 
 void convertBinaryToTextFile(const char* inputFilename, const char* outputFileName)
 {
