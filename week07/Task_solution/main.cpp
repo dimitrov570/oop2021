@@ -15,7 +15,21 @@ void convertBinaryToTextFile(const char* inputFilename, const char* outputFileNa
     // Отваряме файловете.
     std::ifstream fi(inputFilename, std::ios::in | std::ios::binary);
     std::ofstream fo(outputFileName);
-    
+
+    if(!fi.is_open()) // Проверяваме дали успешно са отворени файловете.
+    {
+        std::cerr << "Problem with opening input file!\n";
+    }
+    if(!fo.is_open())
+    {
+        std::cerr << "Problem with opening output file!\n";
+    }
+
+    if(!fi.is_open() || !fo.is_open())
+    {
+        return;
+    }
+
     int n;
     
     // Четем колко числа има във файла.
@@ -40,6 +54,21 @@ void convertTextToBinaryFile(const char* inputFilename, const char* outputFileNa
     std::ifstream fi(inputFilename);
     std::ofstream fo(outputFileName, std::ios::out | std::ios::binary);
     
+
+    if(!fi.is_open()) // Проверяваме дали успешно са отворени файловете.
+    {
+        std::cerr << "Problem with opening input file!\n";
+    }
+    if(!fo.is_open())
+    {
+        std::cerr << "Problem with opening output file!\n";
+    }
+
+    if(!fi.is_open() || !fo.is_open())
+    {
+        return;
+    }
+
     int n;
     
     // Четем колко числа има във файла.
@@ -64,6 +93,12 @@ void computeFromBinaryFile(const char* filename)
 {
     std::ifstream fi(filename, std::ios::in | std::ios::binary);
 
+    if(!fi.is_open()) // Проверяваме дали успешно е отворен файлът.
+    {
+        std::cerr << "Problem with opening input file!\n";
+        return;
+    }
+
     int n;
     fi.read((char *)&n, sizeof(int)); // Четем колко числа има във файла.
 
@@ -82,6 +117,12 @@ void computeFromBinaryFile(const char* filename)
 void computeFromTextFile(const char* filename)
 {
     std::ifstream fi(filename);
+
+    if(!fi.is_open()) // Проверяваме дали успешно е отворен файлът.
+    {
+        std::cerr << "Problem with opening input file!\n";
+        return;
+    }
 
     int n;
     fi >> n; // Четем колко числа има във файла.
@@ -102,10 +143,10 @@ void computeFromTextFile(const char* filename)
 int main(int argc, char* argv[])
 {
 
-   // convertTextToBinaryFile("input.txt", "input.bin");
-   // convertBinaryToTextFile("input.bin", "input.txt");
-   // computeFromTextFile("input.txt");
-    computeFromBinaryFile("input.bin");
+    // convertTextToBinaryFile("input.txt", "input.bin");
+    // convertBinaryToTextFile("input.bin", "input.txt");
+    computeFromTextFile("input.txt");
+    // computeFromBinaryFile("input.bin");
 
     return 0;
 }
