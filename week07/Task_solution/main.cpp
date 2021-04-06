@@ -10,6 +10,25 @@
 // seekg(HEADER_SIZE + n*sizeof(Rational), std::ios::beg)
 
 // Тези функции за конвертиране се отнасят само за файловете с рационални числа.
+void convertBinaryToTextFile(const char* inputFilename, const char* outputFileName);
+
+void convertTextToBinaryFile(const char* inputFilename, const char* outputFileName);
+
+void computeFromBinaryFile(const char* filename);
+
+void computeFromTextFile(const char* filename);
+
+int main(int argc, char* argv[])
+{
+
+    // convertTextToBinaryFile("input.txt", "input.bin");
+    // convertBinaryToTextFile("input.bin", "input.txt");
+    computeFromTextFile("input.txt");
+    // computeFromBinaryFile("input.bin");
+
+    return 0;
+}
+
 void convertBinaryToTextFile(const char* inputFilename, const char* outputFileName)
 {
     // Отваряме файловете.
@@ -138,15 +157,4 @@ void computeFromTextFile(const char* filename)
     }
 
     std::cout << "Result is " << result << '\n';
-}
-
-int main(int argc, char* argv[])
-{
-
-    // convertTextToBinaryFile("input.txt", "input.bin");
-    // convertBinaryToTextFile("input.bin", "input.txt");
-    computeFromTextFile("input.txt");
-    // computeFromBinaryFile("input.bin");
-
-    return 0;
 }
