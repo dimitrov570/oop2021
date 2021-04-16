@@ -18,33 +18,37 @@ public:
     bool setNumerator(int);
     bool setDenominator(int);
 
+    //cast to double
+    operator double() const;    
+
+    Rational& operator++(); // prefix
+    Rational operator++(int); // postfix
+    Rational& operator--(); // prefix
+    Rational operator--(int); // postfix
+
+    Rational operator+(const Rational& rhs) const;
+    Rational operator-() const; // unary
+    Rational operator-(const Rational& rhs) const; // binary
+    Rational operator*(const Rational& rhs) const;  
+    Rational operator/(const Rational& rhs) const;
+    Rational& operator+=(const Rational& rhs);
+    Rational& operator-=(const Rational& rhs);
+    Rational& operator*=(const Rational& rhs);
+    Rational& operator/=(const Rational& rhs);
 
     Rational operator+(int x) const;
-    Rational& operator++(); //prefix
-    Rational operator++(int); //postfix
 
-    //unary
-    Rational operator-() const;
+    //operator + with first argument int
+    friend Rational operator+(int x, const Rational& r);
 
-    //cast to double
-    operator double() const;
-
-
-    // TODO
-    // operator- (binary)
-    // operator*
-    // operator/
-    // operator+=
-    // operator-=
-    // operator*=
-    // operator/=
-    // operator-- (prefix/postfix)
     // operator<<
+    friend std::ostream& operator<<(std::ostream& o, const Rational& obj);
+
     // operator>>
+    friend std::istream& operator>>(std::istream& i, Rational& obj);
+
 
 private:
     void simplify();
 };
 
-//operator + with first argument int
-Rational operator+(int x, const Rational& r);
