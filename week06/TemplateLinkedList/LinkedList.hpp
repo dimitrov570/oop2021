@@ -12,7 +12,7 @@ template <typename T>
 class LinkedList
 {
     Node<T>* first;
-    int size;
+    size_t size;
 
 public:
 
@@ -20,17 +20,27 @@ public:
 
     void push_front(T v);
     void push_back(T v);
+    void insert_at(size_t index, T value);
+    T pop_front();
+    T pop_back();
+    T remove_at(size_t index);
 
+    T peek_front() const;
+    T peek_back() const;
+    T peek_at(size_t index) const;
+    
     void print() const;
+    size_t getSize() const
+    {
+        return size;
+    }
 
     ~LinkedList();
-
 };
 
 template <typename T>
 LinkedList<T>::LinkedList()
 {
-
     first = nullptr;
     size = 0;
 }
@@ -56,7 +66,7 @@ void LinkedList<T>::push_back(T v)
         tmp->value = v;
         tmp->next = nullptr;
         first = tmp;
-        
+        ++size;
         return;
     }
 
@@ -69,6 +79,174 @@ void LinkedList<T>::push_back(T v)
     tmp->next->value = v;
     tmp->next->next = nullptr;
     ++size;
+}
+
+template <typename T>
+void LinkedList<T>::insert_at(size_t index, T value)
+{
+    if (index > size) // не е >= защото можем да добавяме и в края
+    {
+        std::cerr << "Invalid index\n";
+        return;
+    }
+
+    if(index == 0)
+    {
+        push_front(value);
+        return;
+    }
+
+    Node<T>* tmp = first;
+    int counter = 0;
+
+    while(counter < index)
+    {
+        tmp = tmp->next;
+        ++counter;
+    }
+
+    Node<T>* newNode = new Node<T>();
+    newNode->value = value; 
+    newNode->next = tmp->next;
+    tmp->next = newNode;
+    ++size;
+}
+
+template <typename T>
+T LinkedList<T>::pop_front() 
+{
+    if (first == nullptr)
+    {
+        std::cerr << "List is empty\n";
+        return T();
+    }
+
+    T returnValue = first->value;
+    Node<T>* tmpPtr = first->next; // <=> (*first).next;
+    delete first;
+    first = tmpPtr;
+    --size;
+    return returnValue;
+}
+
+template <typename T>
+T LinkedList<T>::pop_back()
+{
+    if(first == nullptr)
+    {
+        std::cerr << "List is empty\n";
+        return T();
+    }
+
+    Node<T>* tmp = first;
+    Node<T>* tmpNext = first->next;
+
+    if(tmpNext == nullptr)
+    {
+        return pop_front();
+    }
+
+    while(tmpNext->next != nullptr)
+    {
+        tmp = tmpNext;
+        tmpNext = tmpNext->next;
+    }
+    
+    T returnValue = tmpNext->value;
+    
+    delete tmpNext;
+    tmp->next = nullptr;
+    --size;
+    return returnValue;
+}
+
+template <typename T>
+T LinkedList<T>::remove_at(size_t index)
+{
+    if (index >= size)
+    {
+        std::cerr << "Invalid index\n";
+        return T();
+    }
+
+    if(index == 0)
+    {
+        return pop_front();
+    }
+    
+    Node<T>* tmp = first;
+    Node<T>* tmpNext = first->next;
+    int counter = 0;
+
+    while(counter < index - 1)
+    {
+        tmp = tmp->next;
+        tmpNext = tmpNext->next; 
+        ++counter;
+    }
+    
+    T returnValue = tmpNext->value;
+    tmp->next = tmpNext->next;
+    delete tmpNext;
+    --size;
+    return returnValue;
+}
+
+template <typename T>
+T LinkedList<T>::peek_front() const
+{
+    if (first == nullptr)
+    {
+        std::cerr << "List is empty\n";
+        return T();
+    }
+
+    return first->value;
+}
+
+template <typename T>
+T LinkedList<T>::peek_back() const
+{
+    if (first == nullptr)
+    {
+        std::cerr << "List is empty\n";
+        return T();
+    }
+
+    Node<T>* tmp = first;
+
+    while(tmp->next != nullptr)
+    {
+        tmp = tmp->next;
+    }
+
+    return tmp->value;
+}
+
+template <typename T>
+T LinkedList<T>::peek_at(size_t index) const
+{
+    if (index >= size)
+    {
+        std::cerr << "Invalid index\n";
+        return T();
+    }
+
+    if(index == 0)
+    {
+        return peek_front();
+    }
+
+    Node<T>* tmp = first;
+    int counter = 0;
+
+    while(counter < index)
+    {
+        tmp = tmp->next; 
+        ++counter;
+    }
+
+    return tmp->value;
 }
 
 template <typename T>
