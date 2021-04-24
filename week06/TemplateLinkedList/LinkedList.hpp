@@ -29,6 +29,13 @@ public:
     T peek_back() const;
     T peek_at(size_t index) const;
     
+    // recursive versions
+    void push_back_rec(T value)
+    {   
+        // calling recursive helper function
+        _push_back_recursive(first, value);
+    }
+
     void print() const;
     size_t getSize() const
     {
@@ -36,7 +43,26 @@ public:
     }
 
     ~LinkedList();
+
+private:
+    Node<T>* _push_back_recursive(Node<T>*, T);
 };
+
+template <typename T>
+Node<T>* LinkedList<T>::_push_back_recursive(Node<T>* current, T value)
+{
+    if (current == nullptr)
+    {
+        Node<T>* newNode = new Node<T>;
+        newNode->value = value;
+        newNode->next = nullptr;
+        return newNode;
+        std::cout << "reached nullptr\n";
+    }
+
+    current->next = _push_back_recursive(current->next, value);
+    return current;
+}
 
 template <typename T>
 LinkedList<T>::LinkedList()
@@ -97,7 +123,7 @@ void LinkedList<T>::insert_at(size_t index, T value)
     }
 
     Node<T>* tmp = first;
-    int counter = 0;
+    int counter = 1;
 
     while(counter < index)
     {
