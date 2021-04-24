@@ -18,8 +18,8 @@ int main()
     std::cout << "Front: " << lst.peek_front() << "; Back: " << lst.peek_back() << "; At 2nd index: " << lst.peek_at(2) << '\n';
 
     // std::cout << "Removing at 3rd index: " << lst.remove_at(3) << '\n';
-    std::cout << "Removing at 3rd index!\n";
-    lst.remove_at(3);
+    std::cout << "Removing at 3rd index recursively!\n";
+    lst.remove_at_rec(3);
     
     lst.print();
     std::cout << "Popping back: " << lst.pop_back() << '\n';

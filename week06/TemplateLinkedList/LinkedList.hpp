@@ -105,7 +105,8 @@ Node<T>* LinkedList<T>::_remove_at_recursive(Node<T>* current, size_t index)
         return tmp;
     }
 
-    current = _remove_at_recursive(current->next, --index);
+    current->next = _remove_at_recursive(current->next, --index);
+    return current;
 }
 
 template <typename T>
