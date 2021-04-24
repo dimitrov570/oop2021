@@ -33,7 +33,18 @@ public:
     void push_back_rec(T value)
     {   
         // calling recursive helper function
-        _push_back_recursive(first, value);
+        first = _push_back_recursive(first, value);
+    }
+
+    void remove_at_rec(size_t index) // doesn't return removed value
+    {
+        if (index >= size)
+        {
+            std::cerr << "Invalid index!\n";
+            return;
+        }
+        // calling recursive helper function
+        first = _remove_at_recursive(first, index);
     }
 
     void print() const;
@@ -46,23 +57,8 @@ public:
 
 private:
     Node<T>* _push_back_recursive(Node<T>*, T);
+    Node<T>* _remove_at_recursive(Node<T>*, size_t);
 };
-
-template <typename T>
-Node<T>* LinkedList<T>::_push_back_recursive(Node<T>* current, T value)
-{
-    if (current == nullptr)
-    {
-        Node<T>* newNode = new Node<T>;
-        newNode->value = value;
-        newNode->next = nullptr;
-        return newNode;
-        std::cout << "reached nullptr\n";
-    }
-
-    current->next = _push_back_recursive(current->next, value);
-    return current;
-}
 
 template <typename T>
 LinkedList<T>::LinkedList()
@@ -79,6 +75,37 @@ void LinkedList<T>::push_front(T v)
     toAdd->next = first;
     first = toAdd;
     ++size;
+}
+
+template <typename T>
+Node<T>* LinkedList<T>::_push_back_recursive(Node<T>* current, T value)
+{
+    if (current == nullptr)
+    {
+        Node<T>* newNode = new Node<T>;
+        newNode->value = value;
+        newNode->next = nullptr;
+        ++size;
+        return newNode;
+        std::cout << "reached nullptr\n";
+    }
+
+    current->next = _push_back_recursive(current->next, value);
+    return current;
+}
+
+template <typename T>
+Node<T>* LinkedList<T>::_remove_at_recursive(Node<T>* current, size_t index)
+{
+    if(index == 0)
+    {
+        Node<T>* tmp = current->next;
+        delete current;
+        --size;
+        return tmp;
+    }
+
+    current = _remove_at_recursive(current->next, --index);
 }
 
 template <typename T>
