@@ -238,7 +238,7 @@ Name: Ivan Ivanov; age: 22; fn: 888888
 
 И примера с вектора от студенти и преподаватели:
 ```c++
-for(Person* ptr : teachersAndStudents)
+    for(Person* ptr : teachersAndStudents)
     {
         ptr->println();
     }
