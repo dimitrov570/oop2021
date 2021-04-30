@@ -10,6 +10,6 @@ public:
 
     int getFacultyNumber() const;
 
-    void print() const;
-    void println() const;
+    void print() const override;
+    void println() const override;
 };

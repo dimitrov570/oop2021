@@ -4,6 +4,11 @@
 Teacher::Teacher(const char* _name, int _age, int _salary) : Person(_name, _age), salary(_salary)
 {}
 
+int Teacher::getSalary() const
+{
+    return salary;
+}
+
 void Teacher::print() const
 {
     Person::print();

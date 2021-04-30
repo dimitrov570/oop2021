@@ -8,7 +8,8 @@ int salary;
 public:
     Teacher(const char*, int, int);
 
-    void print() const;
-    void println() const;
+    int getSalary() const;
 
+    void print() const override;
+    void println() const override;
 };
