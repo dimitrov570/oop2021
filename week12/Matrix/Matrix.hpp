@@ -5,8 +5,8 @@ template <class T>
 class Matrix {
 private:
     T** matrix;
-    unsigned sizeX;
-    unsigned sizeY;
+    unsigned width;
+    unsigned height;
     void erase();
     void allocateMemoryForMatrix(const unsigned&, const unsigned&);
 public:
@@ -23,8 +23,8 @@ public:
 
 template <class T>
 Matrix<T>::Matrix() {
-    sizeX = 2;
-    sizeY = 2;
+    width = 2;
+    height = 2;
 
     matrix = new T*[2];
     matrix[0] = new T[2];
@@ -32,23 +32,23 @@ Matrix<T>::Matrix() {
 }
 
 template <class T>
-void Matrix<T>::allocateMemoryForMatrix(const unsigned& sizeX, const unsigned& sizeY) {
-    this -> sizeX = sizeX;
-    this -> sizeY = sizeY;
-    matrix = new T*[sizeY];
-    for (unsigned i = 0; i < sizeY; ++ i) {
-        matrix[i] = new T[sizeX];
+void Matrix<T>::allocateMemoryForMatrix(const unsigned& width, const unsigned& height) {
+    this->width = width;
+    this->height = height;
+    matrix = new T*[height];
+    for (unsigned i = 0; i < height; ++i) {
+        matrix[i] = new T[width];
     }
 }
 
 template <class T>
-Matrix<T>::Matrix(const unsigned& sizeX, const unsigned& sizeY) {
-    allocateMemoryForMatrix(sizeX, sizeY);
+Matrix<T>::Matrix(const unsigned& width, const unsigned& height) {
+    allocateMemoryForMatrix(width, height);
 }
 
 template <class T>
-void Matrix<T> :: erase() {
-    for (unsigned i = 0; i < sizeY; ++i) {
+void Matrix<T>::erase() {
+    for (unsigned i = 0; i < height; ++i) {
         delete[] matrix[i];
     }
     delete[] matrix;
@@ -57,9 +57,9 @@ void Matrix<T> :: erase() {
 template <class T>
 Matrix<T>::Matrix(const Matrix<T>& rhs) {
     if (rhs != nullptr) {
-        allocateMemoryForMatrix(rhs.sizeX, rhs.sizeY);
-        for (unsigned y = 0; y < sizeY; ++ y) {
-            for (unsigned x = 0; x < sizeX; ++ x) {
+        allocateMemoryForMatrix(rhs.width, rhs.height);
+        for (unsigned y = 0; y < height; ++ y) {
+            for (unsigned x = 0; x < width; ++ x) {
                 matrix[y][x] = rhs.matrix[y][x];
             }
         }
@@ -71,9 +71,9 @@ template <class T>
 Matrix<T>& Matrix<T>::operator=(const Matrix<T>& rhs) {
     if (rhs.matrix != nullptr) {
         erase();
-        allocateMemoryForMatrix(rhs.sizeX, rhs.sizeY);
-        for (unsigned y = 0; y < sizeY; ++ y) {
-            for (unsigned x = 0; x < sizeX; ++ x) {
+        allocateMemoryForMatrix(rhs.width, rhs.height);
+        for (unsigned y = 0; y < height; ++ y) {
+            for (unsigned x = 0; x < width; ++ x) {
                 matrix[y][x] = rhs.matrix[y][x];
             }
         }       
@@ -88,7 +88,7 @@ Matrix<T>::~Matrix() {
 
 template <class T>
 bool Matrix<T>::setAt(const unsigned& x, const unsigned& y, T value) {
-    if (matrix != nullptr && x - 1 < sizeX && y - 1 < sizeY) {
+    if (matrix != nullptr && x - 1 < width && y - 1 < height) {
         matrix[y - 1][x - 1] = value;
         return true;
     }
@@ -102,18 +102,19 @@ T Matrix<T>::getAt(const unsigned& x, const unsigned& y) {
 
 template <class T>
 bool Matrix<T>::transpose() { 
+
     T** newMatrix;
-    newMatrix = new T*[sizeX];
-    for (unsigned i = 0; i < sizeX; ++ i) {
-        newMatrix[i] = new T[sizeY];
+    newMatrix = new T*[width];
+    for (unsigned i = 0; i < width; ++ i) {
+        newMatrix[i] = new T[height];
     }
-    for (unsigned y = 0; y < sizeX; ++ y) {
-        for (unsigned x = 0; x < sizeY; ++ x) {
+    for (unsigned y = 0; y < width; ++ y) {
+        for (unsigned x = 0; x < height; ++ x) {
             newMatrix[y][x] = matrix[x][y];
         }
     } 
     
-    std :: swap(sizeY, sizeX);
+    std::swap(height, width);
 
     erase();
     matrix = newMatrix;
@@ -122,8 +123,8 @@ bool Matrix<T>::transpose() {
 
 template <class T>
 void Matrix<T>::print() const {
-    for (unsigned y = 0; y < sizeY; ++ y) {
-        for (unsigned x = 0; x < sizeX; ++ x) {
+    for (unsigned y = 0; y < height; ++ y) {
+        for (unsigned x = 0; x < width; ++ x) {
             std :: cout << matrix[y][x] << " ";
         }
         std :: cout << std::endl;
